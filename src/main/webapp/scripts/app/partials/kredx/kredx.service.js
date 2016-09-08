@@ -8,13 +8,13 @@ angular.module('kredx')
                     return $resource('searchctrl/');
                 },
 
-                updateBestPriceOfEachBlock: function() {
-                    return $resource('updateBestPriceOfEachBlock', {},
+                runTestQueries: function() {
+                    return $resource('runTestQueries/', {},
                         {
-                            updateBestPriceOfEachBlock: {
-                                method: 'POST',
+                            runTestQueries: {
+                                method: 'GET',
                                 transformResponse: function (data) {
-                                    return {list: angular.fromJson(data)}
+                                    return {testQueryResult: angular.fromJson(data)}
                                 }
                             }
                         })

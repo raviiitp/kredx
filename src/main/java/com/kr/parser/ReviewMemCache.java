@@ -13,9 +13,11 @@ import javax.inject.Named;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.env.Environment;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.kr.constant.Constant;
 import com.kr.dto.Review;
 import com.kr.fileio.TextFileReader;
 
@@ -24,6 +26,9 @@ public class ReviewMemCache {
 	
 	@Inject
 	private TextFileReader textFileReader;
+	
+	@Inject
+	private Environment env;
 	
 	private final static Logger log = LoggerFactory.getLogger(ReviewMemCache.class);
 	public HashMap<String, HashMap<String, Integer>> keyDocFreqMap;
@@ -35,7 +40,7 @@ public class ReviewMemCache {
 		keyDocFreqMap = new HashMap<String, HashMap<String, Integer>>();
 		reviewsMap = new HashMap<String, Review>();
 		textFileReader.start();
-		readFile("food_review.txt");
+		readFile(env.getProperty(Constant.TargetFileName));
 	}
 	
 	public void readFile(String fileName) {
@@ -65,11 +70,6 @@ public class ReviewMemCache {
 			String token = msgToken.nextToken();
 			if (keyDocFreqMap.containsKey(token)) {
 				HashMap<String, Integer> docFreq = keyDocFreqMap.get(token);
-				/*if (docFreq.containsKey(docId)) {
-					docFreq.put(docId, docFreq.get(docId) + 1);
-				} else {
-					docFreq.put(docId, 1);
-				}*/
 				docFreq.put(docId, 1);
 			} else {
 				HashMap<String, Integer> docFreq = new HashMap<String, Integer>();

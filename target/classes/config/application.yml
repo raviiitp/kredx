@@ -1,0 +1,11 @@
+original.file.name: food.txt
+
+target.file.name: food_review.txt
+
+test.queries.file.name: text_queries.txt
+
+max: 50000
+
+test.queries.size: 100000
+
+word.count.max: 20

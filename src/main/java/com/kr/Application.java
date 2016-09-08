@@ -3,8 +3,6 @@ package com.kr;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
-import javax.annotation.PostConstruct;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.Banner;
@@ -18,13 +16,6 @@ public class Application {
 	
 	private static final Logger log = LoggerFactory.getLogger(Application.class);
 	
-	
-	
-	@PostConstruct
-	public void start(){
-		log.info("in application");
-	}
-
     public static void main(String[] args) throws UnknownHostException {
 		SpringApplication app = new SpringApplication(Application.class);
 		app.setBannerMode(Banner.Mode.OFF);

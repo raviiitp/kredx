@@ -9,12 +9,16 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.LinkedList;
 
+import javax.annotation.PostConstruct;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.env.Environment;
 
 import com.google.gson.Gson;
+import com.kr.constant.Constant;
 import com.kr.dto.Review;
 
 @Named(value = "TextFileReader")
@@ -22,16 +26,24 @@ public class TextFileReader {
 
 	private final static Logger log = LoggerFactory.getLogger(TextFileReader.class);
 	
-	private final static int MAX = 50000;
+	private int MAX;
+
+	@Inject
+	private Environment env;
 	
 	FileInputStream file;
 	InputStreamReader reader;
 	BufferedReader br;
+	
+	@PostConstruct
+	public void init() {
+		MAX = Integer.parseInt(env.getProperty(Constant.MAX));
+	}
 
 	public void start() {
-		File targetFile = new File("food_review.txt");
+		File targetFile = new File(env.getProperty(Constant.TargetFileName));
 		if(!targetFile.exists()) {
-			File inputFile = new File("food.txt");
+			File inputFile = new File(env.getProperty(Constant.OriginalFileName));
 			if(inputFile.exists()){
 				try {
 					file = new FileInputStream(inputFile);

@@ -97,8 +97,29 @@ angular.module('kredx')
                         $scope.searchInProgress = '';
                     });
             }
+        };
 
-        }
+        $scope.testQueryResult = {
+            timeDiff : 0,
+            noOfTestQueries: 0
+        };
+
+        $scope.runTestQueries = function(){
+            $scope.searchInProgress = 'indeterminate';
+
+            var deferredObject = $q.defer();
+            kredxFactory.runTestQueries().runTestQueries({
+            })
+                .$promise
+                .then(function (result) {
+                    deferredObject.resolve(result);
+                    $scope.testQueryResult = result.testQueryResult;
+                    $scope.searchInProgress = '';
+                }, function (errorMsg) {
+                    deferredObject.reject(errorMsg);
+                    $scope.searchInProgress = '';
+                });
+        };
     })
 ;
 
