@@ -17,10 +17,15 @@ wrk -t5 -c40 -d10s "http://localhost:8080/searchctrl?queries=wow&queries=hello&q
 
 Running 10s test @ http://localhost:8080/searchctrl?queries=wow&queries=hello&queries=cat&queries=dog&numReview=20
   5 threads and 40 connections
+  
   Thread  Stats   Avg    Stdev    Max     +/- Stdev
+  
     Latency   174.08ms   89.45ms 707.17ms   84.96%
+    
     Req/Sec   49.63     22.39   120.00     69.15%
+    
     2366 requests in 10.01s, 41.96MB read
+    
 Requests/sec:      236.31
 Transfer/sec:      4.19MB
 
