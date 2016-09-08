@@ -26,6 +26,7 @@ Transfer/sec:      4.19MB
 
 Time taken for getting top 20 reviews for queries (wow, hello, cat, dog)
 
+
 2016-09-08 20:38:53.407  INFO 9562 --- [io-8080-exec-23] com.kr.rest.SearchController             : Searched in 75 milliseconds
 2016-09-08 20:38:53.408  INFO 9562 --- [io-8080-exec-30] com.kr.rest.SearchController             : Searched in 39 milliseconds
 2016-09-08 20:38:53.409  INFO 9562 --- [io-8080-exec-17] com.kr.rest.SearchController             : Searched in 51 milliseconds
