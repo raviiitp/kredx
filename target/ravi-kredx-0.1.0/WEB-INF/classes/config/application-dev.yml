@@ -1,0 +1,7 @@
+server:
+    port: 8080
+    sessionTimeout: 20000000
+
+http:
+    cache:
+        timeToLiveInDays: 31

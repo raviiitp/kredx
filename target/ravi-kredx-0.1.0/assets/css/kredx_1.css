@@ -1,0 +1,55 @@
+
+
+body {
+    min-width: 480px;
+    margin-left: 15%;
+    margin-right: 10%;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    font-family: Arial, sans-serif;
+    -webkit-font-smoothing: subpixel-antialiased;
+}
+html{font-size: 16px; line-height: 1.42857}
+html.md-default-theme, html, body.md-default-theme, body{
+    background-color: #fff;
+}
+/* chip */
+.queryChip{
+    background-color: #eee;
+    cursor: default;
+    border-radius: 16px;
+    font-size: 14px;
+    padding: 0 6px;
+    margin: 20px 10px;
+    //float: left;
+    display: inline-block;
+    box-sizing: border-box;
+    max-width: 200px;
+    position: relative;
+    color: #404040;
+}
+.queryChip:hover{
+    background-color: #ddd;
+}
+.queryChipClose {
+    cursor: pointer;
+    color: #a0a0a0;
+}
+.queryChipClose:hover {
+    cursor: pointer;
+    color: #4285F4;
+}
+
+.newQueryChip{
+    max-width: 250px;
+    text-align: left;
+}
+
+.reviewBlock{
+    padding: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid grey;
+}
+

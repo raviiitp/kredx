@@ -1,0 +1,49 @@
+<div class="searchInProgress" ng-show="searchInProgress !='' ">
+    <md-progress-circular class="md-warn sipCircle" md-mode="{{searchInProgress}}"
+                          md-diameter="70"></md-progress-circular>
+</div>
+
+<div style="text-align: center">
+    <h1 style="padding: 10px 0">Tasty Search</h1>
+
+    <div layout="column" ng-cloak class="md-inline-form">
+
+        <md-content style="background: #FFFFFF">
+            <div>
+                <form name="userForm" ng-submit="search()">
+                    <div>
+                        <md-input-container class="queryChip" ng-repeat="query in queries track by $index" >
+                            <input ng-model="query" ng-blur="editQuery(query, $index)" aria-label="query" autocomplete="off">
+                        </md-input-container>
+
+                        <md-input-container class="newQueryChip"  >
+                            <label for="newQueryId">Query</label>
+                            <input id="newQueryId" ng-model="_newQuery" ng-blur="newQuery(_newQuery)" autocomplete="off">
+                        </md-input-container>
+
+                        <md-button type="submit" class="md-raised md-primary">Search</md-button>
+                    </div>
+                </form>
+            </div>
+        </md-content>
+    </div>
+</div>
+
+<div style="padding: 0 10px;" ng-show="prevQueries.length">
+    <div><span style="text-decoration: underline">Your <span ng-show="prevQueries.length === 1">query:</span> <span ng-show="prevQueries.length > 1">queries:</span></span> <span style="padding: 0 4px" ng-repeat="query in prevQueries" ng-bind="query"></span>
+    </div>
+    <br>
+    <div ng-show="searchResult.length"><span style="text-decoration: underline">Reviews:</span></div>
+    <div class="reviewBlock" ng-repeat="result in searchResult">
+        <div>#<span ng-bind="$index + 1"></span></div>
+        <div ng-show="result.profileName.length">Review by: <span ng-bind="result.profileName"></span></div>
+        <div ng-show="result.score > 0">Score: <span ng-bind="result.score"></span></div>
+        <div ng-show="result.summary.length">Summary: <span ng-bind="result.summary"></span></div>
+        <div>Review:
+            <div class="text" ng-hide="result.show_text_full === true"><span ng-bind="result.text"></span>  <span style="color: #0f6ab4; outline-style: none;" ng-click="result.show_text_full = true" ng-show="result.show_text_full !== undefined">more</span></div>
+            <div class="text" ng-show="result.show_text_full === true"><span ng-bind="result.text_full"></span>  <span style="color: #0f6ab4; outline-style: none;" ng-click="result.show_text_full = false" ng-show="result.show_text_full !== undefined">less</span></div>
+        </div>
+    </div>
+
+    <div ng-show="!searchResult.length">No review.</div>
+</div>
